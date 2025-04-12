@@ -256,7 +256,8 @@ int main() {
 
     vector<pair<vector<string>, int>> frequentItemsets;
     tree.mineFPTree(minsup, {}, frequentItemsets);
-
+    // write to file
+    remove("frequent_itemsets.txt");
     ofstream outFile("frequent_itemsets.txt");
     if (!outFile.is_open()) {
         cerr << "Cannot open output file!" << endl;
