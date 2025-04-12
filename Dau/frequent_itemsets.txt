@@ -1,0 +1,5 @@
+Frequent Itemsets (MinSup = 2):
+{A} : 3
+{B} : 3
+{C} : 3
+{C, A} : 3
