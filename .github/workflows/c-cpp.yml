@@ -1,23 +1,49 @@
 name: C/C++ CI
-
 on:
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v4
-    - name: configure
-      run: ./configure
-    - name: make
-      run: make
-    - name: make check
-      run: make check
-    - name: make distcheck
-      run: make distcheck
+    - name: Install GCC
+      run: sudo apt-get update && sudo apt-get install -y g++
+    - name: Find and Compile C++ Files in Dau
+      run: |
+        for file in Dau/*.cpp; do
+          if [ -f "$file" ]; then
+            echo "Compiling $file..."
+            filename=$(basename "$file" .cpp)
+            g++ "$file" -o "Dau/$filename"
+          fi
+        done
+    - name: Find and Compile C++ Files in Don
+      run: |
+        for file in Don/*.cpp; do
+          if [ -f "$file" ]; then
+            echo "Compiling $file..."
+            filename=$(basename "$file" .cpp)
+            g++ "$file" -o "Don/$filename"
+          fi
+        done
+    - name: Run C++ Programs in Dau
+      run: |
+        for file in Dau/*.cpp; do
+          if [ -f "$file" ]; then
+            filename=$(basename "$file" .cpp)
+            echo "Running Dau/$filename..."
+            ./Dau/$filename
+          fi
+        done
+    - name: Run C++ Programs in Don
+      run: |
+        for file in Don/*.cpp; do
+          if [ -f "$file" ]; then
+            filename=$(basename "$file" .cpp)
+            echo "Running Don/$filename..."
+            ./Don/$filename
+          fi
+        done
