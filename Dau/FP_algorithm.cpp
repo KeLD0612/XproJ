@@ -181,12 +181,14 @@ vector<string> split(const string& line, char delimiter) {
 }
 
 int main() {
-    string filename;
-    cout << "Enter file name: ";
-    cin >> filename;
-    int minsup;
-    cout << "Enter MinSup: ";
-    cin >> minsup;
+    string filename = "chess.hui";
+    int minsup = 40;
+    // string filename;
+    // cout << "Enter file name: ";
+    // cin >> filename;
+    // int minsup;
+    // cout << "Enter MinSup: ";
+    // cin >> minsup;
 
     if (minsup <= 0) {
         cerr << "MinSup must be positive!" << endl;
