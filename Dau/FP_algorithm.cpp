@@ -181,8 +181,8 @@ vector<string> split(const string& line, char delimiter) {
 }
 
 int main() {
-    string filename = "chess.hui";
-    int minsup = 40;
+    string filename = "test_Data.hui";
+    int minsup = 2;
     // string filename;
     // cout << "Enter file name: ";
     // cin >> filename;
